@@ -16,6 +16,8 @@ func New(provider string, p *ProviderData) Provider {
 		return NewMyUsaProvider(p)
 	case "linkedin":
 		return NewLinkedInProvider(p)
+        case "cloundfoundry":
+                return newCloundfoundryProvider(p)
 	default:
 		return NewGoogleProvider(p)
 	}
