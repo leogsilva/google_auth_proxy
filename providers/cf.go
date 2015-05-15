@@ -40,7 +40,7 @@ func NewCloudfoundryProvider(p *ProviderData) *CloudfoundryProvider {
 	return &CloudfoundryProvider{ProviderData: p}
 }
 
-func (p *LinkedInProvider) GetEmailAddress(unused_auth_response *simplejson.Json,
+func (p *CloudfoundryProvider) GetEmailAddress(unused_auth_response *simplejson.Json,
 	access_token string) (string, error) {
 	if access_token == "" {
 		return "", errors.New("missing access token")
