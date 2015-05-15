@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/bitly/go-simplejson"
-	"github.com/bitly/google_auth_proxy/providers"
+	"github.com/leogsilva/google_auth_proxy/providers"
 	"github.com/bmizerany/assert"
 	"io/ioutil"
 	"net"

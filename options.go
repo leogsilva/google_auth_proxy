@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bitly/google_auth_proxy/providers"
+	"github.com/leogsilva/google_auth_proxy/providers"
 )
 
 // Configuration Options that can be set by Command Line Flag, or Config File
