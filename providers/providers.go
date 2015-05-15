@@ -1,6 +1,7 @@
 package providers
 
 import (
+        "fmt"
 	"github.com/bitly/go-simplejson"
 )
 
@@ -19,6 +20,7 @@ func New(provider string, p *ProviderData) Provider {
         case "cloudfoundry":
                 return NewCloudfoundryProvider(p)
 	default:
+                fmt.Println("Found %s",provider)
 		return NewGoogleProvider(p)
 	}
 }
