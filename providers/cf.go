@@ -12,12 +12,12 @@ import (
 	"github.com/bitly/google_auth_proxy/api"
 )
 
-type CloundfoundryProvider struct {
+type CloudfoundryProvider struct {
 	*ProviderData
 }
 
-func NewCloundfoundryProvider(p *ProviderData) *CloundfoundryProvider {
-	p.ProviderName = "Cloundfoundry"
+func NewCloudfoundryProvider(p *ProviderData) *CloudfoundryProvider {
+	p.ProviderName = "cloudfoundry"
 	if p.LoginUrl.String() == "" {
 		p.LoginUrl = &url.URL{Scheme: "https",
 			Host: "uaa.10.0.0.63.xip.io",
@@ -36,7 +36,7 @@ func NewCloundfoundryProvider(p *ProviderData) *CloundfoundryProvider {
 	if p.Scope == "" {
 		p.Scope = "r_emailaddress r_basicprofile"
 	}
-	return &CloundfoundryProvider{ProviderData: p}
+	return &CloudfoundryProvider{ProviderData: p}
 }
 
 func (p *LinkedInProvider) GetEmailAddress(unused_auth_response *simplejson.Json,
