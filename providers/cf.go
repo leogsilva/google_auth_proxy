@@ -17,6 +17,7 @@ type CloudfoundryProvider struct {
 }
 
 func NewCloudfoundryProvider(p *ProviderData) *CloudfoundryProvider {
+        log.Printf("Provider found for Cloud Foundry")
 	p.ProviderName = "cloudfoundry"
 	if p.LoginUrl.String() == "" {
 		p.LoginUrl = &url.URL{Scheme: "https",

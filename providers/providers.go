@@ -1,7 +1,7 @@
 package providers
 
 import (
-        "fmt"
+        "log"
 	"github.com/bitly/go-simplejson"
 )
 
@@ -12,6 +12,7 @@ type Provider interface {
 }
 
 func New(provider string, p *ProviderData) Provider {
+        log.Printf("Selecting provider %s",provider)
 	switch provider {
 	case "myusa":
 		return NewMyUsaProvider(p)
