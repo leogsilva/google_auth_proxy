@@ -1,8 +1,11 @@
 #!/bin/bash
 
 # build binary distributions for linux/amd64 and darwin/amd64
-set -e 
 
+set -e 
+export PATH=$PATH:$HOME/go/bin
+export GOROOT=$HOME/go
+export GOPATH=$HOME/google_auth_proxy
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "working dir $DIR"
 mkdir -p $DIR/dist

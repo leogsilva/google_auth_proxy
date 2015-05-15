@@ -17,8 +17,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/bitly/google_auth_proxy/api"
-	"github.com/bitly/google_auth_proxy/providers"
+        "github.com/leogsilva/google_auth_proxy/api"
+        "github.com/leogsilva/google_auth_proxy/providers"
+
 )
 
 const robotsPath = "/robots.txt"
@@ -111,7 +112,7 @@ func NewOauthProxy(opts *Options, validator func(string) bool) *OauthProxy {
 	redirectUrl := opts.redirectUrl
 	redirectUrl.Path = oauthCallbackPath
 
-	log.Printf("OauthProxy configured for %s", opts.ClientID)
+	log.Printf("v2 OauthProxy configured for %s", opts.ClientID)
 	domain := opts.CookieDomain
 	if domain == "" {
 		domain = "<default>"

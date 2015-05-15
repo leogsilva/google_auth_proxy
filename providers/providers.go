@@ -21,7 +21,7 @@ func New(provider string, p *ProviderData) Provider {
         case "cloudfoundry":
                 return NewCloudfoundryProvider(p)
 	default:
-                fmt.Println("Found %s",provider)
+                log.Printf("Found %s",provider)
 		return NewGoogleProvider(p)
 	}
 }
