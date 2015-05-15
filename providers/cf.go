@@ -22,7 +22,7 @@ func NewCloudfoundryProvider(p *ProviderData) *CloudfoundryProvider {
 	if p.LoginUrl.String() == "" {
 		p.LoginUrl = &url.URL{Scheme: "https",
 			Host: "uaa.10.0.0.63.xip.io",
-			Path: "/authorize"}
+			Path: "/oauth/authorize"}
 	}
 	if p.RedeemUrl.String() == "" {
 		p.RedeemUrl = &url.URL{Scheme: "https",
