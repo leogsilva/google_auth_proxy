@@ -9,7 +9,7 @@ import (
 	"net/url"
 
 	"github.com/bitly/go-simplejson"
-	"github.com/bitly/google_auth_proxy/api"
+	"github.com/leogsilva/google_auth_proxy/api"
 )
 
 type CloudfoundryProvider struct {
@@ -56,7 +56,7 @@ func (p *CloudfoundryProvider) GetEmailAddress(unused_auth_response *simplejson.
 
 	json, err := api.Request(req)
 	if err != nil {
-		log.Printf("failed making request %s", err)
+		log.Printf("failed %s making request %s", req, err)
 		return "", err
 	}
 
