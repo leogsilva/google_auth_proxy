@@ -1,6 +1,7 @@
 package main
 
 import (
+        "runtime"
 	"bytes"
 	"crypto/aes"
 	"crypto/cipher"
@@ -61,6 +62,12 @@ type OauthProxy struct {
 type UpstreamProxy struct {
 	upstream string
 	handler  http.Handler
+}
+
+func stackTrace() {
+    trace := make([]byte, 1024)
+    count := runtime.Stack(trace, true)
+    fmt.Printf("Stack of %d bytes: %s", count, trace)
 }
 
 func (u *UpstreamProxy) ServeHTTP(w http.ResponseWriter, r *http.Request) {
@@ -466,6 +473,7 @@ func (p *OauthProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 
 		access_token, email, err = p.redeemCode(req.Host, req.Form.Get("code"))
 		if err != nil {
+                        stackTrace()
 			log.Printf("%s error redeeming code %s", remoteAddr, err)
 			p.ErrorPage(rw, 500, "Internal Error", err.Error())
 			return
