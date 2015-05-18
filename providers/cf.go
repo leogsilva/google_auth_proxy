@@ -65,6 +65,6 @@ func (p *CloudfoundryProvider) GetEmailAddress(unused_auth_response *simplejson.
 		log.Printf("failed making request %s", err)
 		return "", err
 	}
-        email := mapResult["email"]
+        email := [string]mapResult["email"]
 	return email, nil
 }
