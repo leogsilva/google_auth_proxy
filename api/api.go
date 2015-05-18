@@ -5,12 +5,15 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-
+        "crypto/tls"
 	"github.com/bitly/go-simplejson"
 )
 
 func Request(req *http.Request) (*simplejson.Json, error) {
-	httpclient := &http.Client{}
+        tr := &http.Transport{
+           TLSClientConfig: &tls.Config{ InsecureSkipVerify: true },
+        }
+	httpclient := &http.Client{Transport: tr}
 	resp, err := httpclient.Do(req)
 	if err != nil {
 		return nil, err
