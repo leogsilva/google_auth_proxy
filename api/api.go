@@ -10,11 +10,12 @@ import (
 )
 
 func Request(req *http.Request) (*simplejson.Json, error) {
-        tr := &http.Transport{
-           TLSClientConfig: &tls.Config{ InsecureSkipVerify: true },
-        }
-	httpclient := &http.Client{Transport: tr}
-	resp, err := httpclient.Do(req)
+        //tr := &http.Transport{
+        //   TLSClientConfig: &tls.Config{ InsecureSkipVerify: true },
+        //}
+	//httpclient := &http.Client{Transport: tr}
+	httpclient := &http.Client{ }
+        resp, err := httpclient.Do(req)
 	if err != nil {
 		return nil, err
 	}
