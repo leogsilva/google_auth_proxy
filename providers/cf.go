@@ -35,7 +35,7 @@ func NewCloudfoundryProvider(p *ProviderData) *CloudfoundryProvider {
 			Path: "/userinfo?schema=openid"}
 	}
 	if p.Scope == "" {
-		p.Scope = "r_emailaddress r_basicprofile"
+		p.Scope = "jenkins_demo.user openid"
 	}
 	return &CloudfoundryProvider{ProviderData: p}
 }
