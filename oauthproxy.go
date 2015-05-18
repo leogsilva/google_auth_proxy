@@ -220,7 +220,10 @@ func (p *OauthProxy) redeemCode(host, code string) (string, string, error) {
 		return "", "", err
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
+        req.Header.Set("authorization", "Basic amVua2luc19kZW1vOnNlY3JldA==") 
 	json, err := api.Request(req)
+        log.Printf("POST to %s is json %s or error %s",p.oauthRedemptionUrl.String(), json, err);
+ 
 	if err != nil {
 		log.Printf("failed making request %s", err)
 		return "", "", err
@@ -475,8 +478,8 @@ func (p *OauthProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		if err != nil {
                         stackTrace()
 			log.Printf("%s error redeeming code %s accessCode %s", remoteAddr, err, access_token)
-			//p.ErrorPage(rw, 500, "Internal Error", err.Error())
-			//return
+			p.ErrorPage(rw, 500, "Internal Error", err.Error())
+			return
 		}
 
 		redirect := req.Form.Get("state")
