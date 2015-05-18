@@ -117,13 +117,11 @@ func main() {
 		networkType = u.Scheme
 	}
 	listenAddr := strings.TrimPrefix(u.String(), u.Scheme+"://")
-
-	listener, err := net.Listen(networkType, listenAddr)
+	listener, err := net.Listen(networkType, listenAddr )
 	if err != nil {
 		log.Fatalf("FATAL: listen (%s, %s) failed - %s", networkType, listenAddr, err)
 	}
 	log.Printf("listening on %s", listenAddr)
-
 	server := &http.Server{Handler: LoggingHandler(os.Stdout, oauthproxy, opts.RequestLogging)}
 	err = server.Serve(listener)
 	if err != nil && !strings.Contains(err.Error(), "use of closed network connection") {

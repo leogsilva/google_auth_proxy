@@ -475,8 +475,8 @@ func (p *OauthProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 		if err != nil {
                         stackTrace()
 			log.Printf("%s error redeeming code %s", remoteAddr, err)
-			p.ErrorPage(rw, 500, "Internal Error", err.Error())
-			return
+			//p.ErrorPage(rw, 500, "Internal Error", err.Error())
+			//return
 		}
 
 		redirect := req.Form.Get("state")
