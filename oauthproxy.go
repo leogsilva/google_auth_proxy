@@ -495,6 +495,7 @@ func (p *OauthProxy) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
 			if err != nil {
 				log.Printf(err.Error())
 			}
+                        req.Header.Add("x-forwarded-user", email)
 			p.SetCookie(rw, req, value)
 			http.Redirect(rw, req, redirect, 302)
 			return
