@@ -46,6 +46,7 @@ type OauthProxy struct {
 	oauthValidateUrl    *url.URL // to validate the access token
 	oauthScope          string
 	clientID            string
+        authentication      string
 	clientSecret        string
 	SignInMessage       string
 	HtpasswdFile        *HtpasswdFile
@@ -152,6 +153,7 @@ func NewOauthProxy(opts *Options, validator func(string) bool) *OauthProxy {
 		Validator:      validator,
 
 		clientID:           opts.ClientID,
+                authentication:     opts.Authentication,
 		clientSecret:       opts.ClientSecret,
 		oauthScope:         opts.provider.Data().Scope,
 		provider:           opts.provider,
@@ -220,7 +222,7 @@ func (p *OauthProxy) redeemCode(host, code string) (string, string, error) {
 		return "", "", err
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-        req.Header.Set("authorization", "Basic amVua2luc19kZW1vOnNlY3JldA==") 
+        req.Header.Set("authorization", p.authentication) 
 	json, err := api.Request(req)
         log.Printf("POST to %s is json %s or error %s",p.oauthRedemptionUrl.String(), json, err);
  

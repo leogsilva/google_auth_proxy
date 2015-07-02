@@ -15,6 +15,7 @@ type Options struct {
 	HttpAddress  string `flag:"http-address" cfg:"http_address"`
 	RedirectUrl  string `flag:"redirect-url" cfg:"redirect_url"`
 	ClientID     string `flag:"client-id" cfg:"client_id" env:"GOOGLE_AUTH_PROXY_CLIENT_ID"`
+        Authentication string `flag:"authentication" cfg:"authentication" env:"AUTHENTICATION"
 	ClientSecret string `flag:"client-secret" cfg:"client_secret" env:"GOOGLE_AUTH_PROXY_CLIENT_SECRET"`
 
 	AuthenticatedEmailsFile string   `flag:"authenticated-emails-file" cfg:"authenticated_emails_file"`
@@ -91,6 +92,9 @@ func (o *Options) Validate() error {
 	if o.ClientID == "" {
 		msgs = append(msgs, "missing setting: client-id")
 	}
+        if o.Authentication == "" {
+                msgs = append(msgs, "missing setting: authentication"
+        }
 	if o.ClientSecret == "" {
 		msgs = append(msgs, "missing setting: client-secret")
 	}
