@@ -7,7 +7,7 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 echo "working dir $DIR"
 mkdir -p $DIR/dist
 mkdir -p $DIR/.godeps
-export GOPATH=$DIR/.godeps:$GOPATH
+export GOPATH=$HOME/go
 gpm install
 
 os=$($HOME/go/bin/go env GOOS)
